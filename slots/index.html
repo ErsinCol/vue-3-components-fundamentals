@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue.js Slots Fundamentals</title>
+    <style>
+        .container {
+            max-width: 1920px;
+            padding: 10px;
+        }
+
+        header {
+            width: 100%;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        footer {
+            width: 100%;
+            margin-top: 50px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <script type="importmap">
+        {
+            "imports": {
+              "vue": "https://unpkg.com/vue@3/dist/vue.esm-browser.js"
+            }
+        }
+    </script>
+
+    <div id="app">
+        <page-layout>
+            <template #header>
+                <h1>Here might be a page title</h1>
+            </template>
+
+            <p>A paragraph for the main content.</p>
+            <p>And another one.</p>
+
+            <template #footer>
+                <p>Here's some contact info.</p>
+            </template>
+        </page-layout>
+    </div>
+
+    <script type="text/x-template" id="page-layout-template">
+        <div class="container">
+            <header>
+                <slot name="header"></slot>
+            </header>
+            <main>
+                <slot></slot>
+            </main>
+            <footer>
+                <slot name="footer"></slot>
+            </footer>
+        </div>
+    </script>
+
+    <script type="module" src="main.js"></script>
+</body>
+</html>
